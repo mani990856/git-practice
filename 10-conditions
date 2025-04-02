@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if (today !="sat" or "sun") {
+    print "attend class today"
+}
+
+else {
+    print "no class"
+}
