@@ -1,9 +1,10 @@
 #!/bin/bash
 
-if (today !="sat" or "sun") {
-    print "attend class today"
-}
+NUMBER=$1
 
-else {
-    print "no class"
-}
+if [ $NUMBER -gt 20 ] 
+then
+ echo "Given number: $NUMBER is greater than 20"
+else
+ echo "Given number: $NUMBER is less than 20"
+fi 
