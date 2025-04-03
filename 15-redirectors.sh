@@ -30,4 +30,28 @@ VALIDATE(){
     fi
 }
 
+USAGE(){
+    echo "$R USAGE:: $N sudo sh 15-redirectors.sh package1 package2..."
+    exit 1
+
+}
+
 CHECK_ROOT
+
+if [ $e -eq 0 ]
+then 
+    USAGE
+fi
+
+for package in $@
+do
+    dnf list installed $package &>>$LOG_FILE
+    if [ $? -ne 0 ]
+    then
+      echo "git is not installed, going to install" &>>$LOG_FILE
+      dnf install $package -y &>>$LOG_FILE
+      VALIDATE $? "installing $package"
+    else
+      echo -e "$package is already $Y installed.nothing to do" &>>$LOG_FIL
+    fi
+done
